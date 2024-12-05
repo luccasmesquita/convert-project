@@ -1,3 +1,9 @@
+//Cotação de moedas do dia
+const USD = 6.04;
+const EUR = 6.36;
+const GBP = 7.69;
+const BTC = 619.602;
+
 //Obtendo os elementos dos formulario 
 const form = document.querySelector("form");
 const amount = document.getElementById("amount");
@@ -13,5 +19,24 @@ amount.addEventListener("input", () => {
 form.onsubmit = (event) => {
     event.preventDefault()
 
-    console.log(currency.value)
+    switch(currency.value) {
+        case "USD" :
+            convertCurrency(amount.value, USD, "US$")
+            break
+        case "EUR" :
+            convertCurrency(amount.value, EUR, "€")
+            break
+        case "GBP" :
+            convertCurrency(amount.value, GBP, "£")
+            break
+        case "BTC" :
+            convertCurrency(amount.value, BTC, "₿")
+            break
+
+    }
+}
+
+// Função para converter a moeda 
+function convertCurrency(amount, price, symbol) {
+    console.log(amount, price, symbol)
 }
