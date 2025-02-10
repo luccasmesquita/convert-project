@@ -40,8 +40,10 @@ form.onsubmit = (event) => {
 
 // Função para converter a moeda 
 function convertCurrency(amount, price, symbol) {
-    try {    
-        description.textContent = `${symbol} 1 = ${price}`   
+    try {  
+        // exibindo a cotação da moeda  selecionada
+        description.textContent = `${symbol} 1 = ${formatCurrencyBRL(price)}`   
+
         // aplica a classe que exibe o footer para mostrar o resultado 
         footer.classList.add("show-result")
     } catch (error) {
@@ -52,4 +54,13 @@ function convertCurrency(amount, price, symbol) {
         alert("Não foi possível converter. Tente novamente mais tarde.")
 
     }
+}
+
+// Formatar a moeda em real brasileiro
+function formatCurrencyBRL(value) {
+    // converte para numero para utilizar o toLocaleString para formatar no padrão BRL
+    return Number(value).toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    })
 }
